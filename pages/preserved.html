@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SumbuShop.ar - Conservas</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="../js/theme.js" defer></script>
+    <link rel="stylesheet" href="../styles/demo.css" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-xl sticky-top">
+      <div class="container-fluid">
+        <!-- Logo -->
+        <a href="../index.html" class="navbar-brand">
+          🍓 SumbuShop<span>.ar</span>
+        </a>
+
+        <!-- Links de navegación -->
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav mx-auto mb-2 mb-xl-0 gap-1">
+            <li class="nav-item">
+              <a href="../index.html" class="nav-link active">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="jams.html" class="nav-link">Mermeladas</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="preserved.html" class="nav-link">Conservas</a>
+            </li>
+            <li class="nav-item">
+              <a href="bakery.html" class="nav-link">Pastelería</a>
+            </li>
+            <li class="nav-item">
+              <a href="mache-paper.html" class="nav-link"> Papel Maché </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="cosmetics.html" class="nav-link"> Cosmética </a>
+            </li>
+          </ul>
+
+          <!-- Botón de tema -->
+          <div class="d-flex align-items-center gap-2">
+            <button
+              id="themeToggle"
+              class="btn__theme"
+              onclick="toggleTheme()"
+              title="Cambiar tema"
+            >
+              🌙
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!--Contenido de la página de conservas-->
+    <main class="page__content">
+      <div class="header__preserved">
+        <div class="container">
+          <p class="section-eyebrow">Sumbu Shop</p>
+
+          <h1 class="section-title" style="font-size: 2.4rem">
+            <img
+              src="data:image/png;base64,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"
+              alt="external-pickle-healthy-food-and-vegan-justicon-lineal-color-justicon"
+            />Conservas
+          </h1>
+
+          <p
+            style="
+              color: var(--color-text);
+              margin-top: 0.5rem;
+              font-size: 0.95rem;
+              max-width: 480px;
+            "
+          >
+            Conservas artesanales de verduras y frutas, elaboradas con amor y
+            dedicación.
+          </p>
+        </div>
+      </div>
+      <!--Grilla o cards de productos-->
+      <section class="py__section bg__cream">
+        <div class="container">
+          <div class="row g-4 justify-content-center">
+            <!--Card 1-->
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="product__card">
+                <!--Imagen-->
+                <div
+                  class="product__card-img"
+                  style="background: linear-gradient(145deg, #fde8dc, #f5c4a8)"
+                >
+                  <img
+                    src="../img/Conservas/quinotos_almnibar.webp"
+                    alt="quinotos en almíbar"
+                  />
+                </div>
+                <div class="product__card__body">
+                  <!--Etiqueta/categoría del producto-->
+                  <div class="product__card__cat">Conservas</div>
+                  <!--Nombre del producto-->
+                  <div class="product__card__name">Quinotos en almíbar</div>
+                  <!--Descripción-->
+                  <div class="product__card__desc">
+                    Como siempre tenemos frutas de temporada de la mejor
+                    calidad. Quinotos que quedan bien dulces, sin acidez y muy
+                    bueno para consumirlo con queso o solos.
+                  </div>
+                  <!--Precio y botón-->
+                  <div class="product__card__price">$5000</div>
+                  <!--<button class="btn btn-primary w-100">Agregar</button>-->
+                </div>
+              </div>
+            </div>
+            <!--Card 1-->
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="product__card">
+                <!--Imagen-->
+                <div
+                  class="product__card-img"
+                  style="background: linear-gradient(145deg, #fde8dc, #f5c4a8)"
+                >
+                  <img
+                    src="../img/Conservas/Pepinillos.webp"
+                    alt="pepinillos agridulces"
+                  />
+                </div>
+                <div class="product__card__body">
+                  <!--Etiqueta/categoría del producto-->
+                  <div class="product__card__cat">Conservas</div>
+                  <!--Nombre del producto-->
+                  <div class="product__card__name">Pepinillos agridulces</div>
+                  <!--Descripción-->
+                  <div class="product__card__desc">
+                    Pepinillos con un toque dulce y salado, para nada
+                    avinagrado. Ideal para complemento en ensaladas, arroz frío,
+                    sanguches y más.
+                  </div>
+                  <!--Precio y botón-->
+                  <div class="product__card__price">$4500</div>
+                  <!--<button class="btn btn-primary w-100">Agregar</button>-->
+                </div>
+              </div>
+            </div>
+            <!--cierre de grilla-->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site__footer py-4">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 text-center text-lg-start mb-3 mb-lg-0">
+            <div class="footer__logo">🍓 Sumbu Shop</div>
+
+            <div>Hecho con ❤️ en Argentina</div>
+          </div>
+
+          <div class="col-lg-4 text-center mb-3 mb-lg-0">
+            <div class="d-flex justify-content-center gap-4">
+              <a href="about-us.html"> Sobre Nosotros </a>
+
+              <a href="#" class="js-wa-link">Contacto por WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 text-center text-lg-end">
+            © 2026 Sumbu Shop. Todos los derechos reservados.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/demo.js"></script>
+  </body>
+</html>

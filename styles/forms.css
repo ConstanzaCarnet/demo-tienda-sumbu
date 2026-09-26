@@ -1,0 +1,119 @@
+.form__page {
+  min-height: calc(100vh - 120px); /* resta navbar + footer */
+  background-color: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.form__card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 24px rgba(58, 37, 24, 0.07);
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 420px;
+}
+
+/* Header de la card */
+.form__card-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.form__card-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+
+.form__card-subtitle {
+  font-size: 0.875rem;
+  color: var(--color-text-soft);
+  margin-bottom: 0;
+}
+
+/* Grupos de campos */
+.form__group {
+  margin-bottom: 1.25rem;
+}
+
+.form__group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.35rem;
+}
+
+.form-control {
+  border: 1.5px solid var(--color-border) !important;
+  border-radius: var(--radius-sm) !important;
+  background-color: var(--color-bg) !important;
+  font-size: 0.9rem !important;
+  color: var(--color-text) !important;
+  padding: 0.6rem 0.85rem !important;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.form-control:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px rgba(192, 74, 42, 0.1) !important;
+  outline: none !important;
+}
+
+.form-control::placeholder {
+  color: #b0a89e;
+}
+
+/* Fila doble — nombre + apellido */
+.form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Botón submit */
+.btn__submit {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.15s;
+  margin-top: 0.5rem;
+}
+
+.btn__submit:hover {
+  background-color: var(--color-primary-dk);
+  transform: translateY(-1px);
+}
+
+/* Link al pie */
+.form__footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--color-text-soft);
+}
+
+.form__footer a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.form__footer a:hover {
+  text-decoration: underline;
+}

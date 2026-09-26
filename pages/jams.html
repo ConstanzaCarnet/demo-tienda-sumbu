@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>SumbuShop.ar - Mermeladas</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../styles/styles.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="../js/theme.js" defer></script>
+    <link rel="stylesheet" href="../styles/demo.css" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-xl sticky-top">
+      <div class="container-fluid">
+        <!-- Logo -->
+        <a href="../index.html" class="navbar-brand">
+          🍓 SumbuShop<span>.ar</span>
+        </a>
+
+        <!-- Links de navegación -->
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav mx-auto mb-2 mb-xl-0 gap-1">
+            <li class="nav-item">
+              <a href="../index.html" class="nav-link active">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="jams.html" class="nav-link">Mermeladas</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="preserved.html" class="nav-link">Conservas</a>
+            </li>
+            <li class="nav-item">
+              <a href="bakery.html" class="nav-link">Pastelería</a>
+            </li>
+            <li class="nav-item">
+              <a href="mache-paper.html" class="nav-link"> Papel Maché </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="cosmetics.html" class="nav-link"> Cosmética </a>
+            </li>
+          </ul>
+
+          <!-- Botón de tema -->
+          <div class="d-flex align-items-center gap-2">
+            <button
+              id="themeToggle"
+              class="btn__theme"
+              onclick="toggleTheme()"
+              title="Cambiar tema"
+            >
+              🌙
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Contenido de la página de mermeladas -->
+    <main class="page__content">
+      <div class="header__jam">
+        <div class="container">
+          <p class="section-eyebrow">Sumbu Shop</p>
+
+          <h1 class="section-title" style="font-size: 2.4rem">
+            <img
+              src="data:image/png;base64,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"
+              alt="external-jam-healthy-food-and-vegan-justicon-lineal-color-justicon"
+            />
+            Mermeladas
+          </h1>
+
+          <p
+            style="
+              color: var(--color-text-soft);
+              margin-top: 0.5rem;
+              font-size: 0.95rem;
+              max-width: 480px;
+            "
+          >
+            Elaboradas con frutas frescas seleccionadas, sin conservantes
+            artificiales y con recetas que cuidan cada detalle.
+          </p>
+        </div>
+      </div>
+
+      <!--Grilla o cards de productos-->
+
+      <section class="py__section bg__cream">
+        <div class="container">
+          <div class="row g-4 justify-content-center">
+            <!--Card 1-->
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="product__card">
+                <!--Imagen-->
+                <div
+                  class="product__card-img"
+                  style="background: linear-gradient(145deg, #fde8dc, #f5c4a8)"
+                >
+                  <img
+                    src="../img/mermeladas/naranjasParaMermelada.webp"
+                    alt="mermelada de naranjas"
+                  />
+                </div>
+                <div class="product__card__body">
+                  <!--Etiqueta/categoría del producto-->
+                  <div class="product__card__cat">Mermeladas</div>
+                  <!--Nombre del producto-->
+                  <div class="product__card__name">Mermelada de naranjas</div>
+                  <!--Descripción-->
+                  <div class="product__card__desc">
+                    Naranjas frescas de temporada, cocidas a fuego lento. Sin
+                    colorantes, ni conservantes, reducida en azúcares.
+                  </div>
+                  <!--Precio y botón-->
+                  <div class="product__card__price">$2000</div>
+                  <!--<button class="btn btn-primary w-100">Agregar</button>-->
+                </div>
+              </div>
+            </div>
+
+            <!--Card 2-->
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="product__card">
+                <!--Imagen-->
+                <div
+                  class="product__card-img"
+                  style="background: linear-gradient(145deg, #fde8dc, #f5c4a8)"
+                >
+                  <img
+                    src="../img/mermeladas/mermeladaDeFrutillas.webp"
+                    alt="mermelada de frutillas"
+                  />
+                </div>
+                <div class="product__card__body">
+                  <!--Etiqueta/categoría del producto-->
+                  <div class="product__card__cat">Mermeladas</div>
+                  <!--Nombre del producto-->
+                  <div class="product__card__name">Mermelada de frutillas</div>
+                  <!--Descripción-->
+                  <div class="product__card__desc">
+                    Elaboradas con frutas frescas seleccionadas, sin
+                    conservantes artificiales y con recetas tradicionales.
+                  </div>
+                  <!--Precio y botón-->
+                  <div class="product__card__price">$3000</div>
+                  <!--<button class="btn btn-primary w-100">Agregar</button>-->
+                </div>
+              </div>
+            </div>
+
+            <!--Card 3-->
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="product__card">
+                <!--Imagen-->
+                <div
+                  class="product__card-img"
+                  style="background: linear-gradient(145deg, #fde8dc, #f5c4a8)"
+                >
+                  <img
+                    src="../img/mermeladas/mermeladaDeMandarina.webp"
+                    alt="mermelada de mandarinas"
+                  />
+                </div>
+                <div class="product__card__body">
+                  <!--Etiqueta/categoría del producto-->
+                  <div class="product__card__cat">Mermeladas</div>
+                  <!--Nombre del producto-->
+                  <div class="product__card__name">Mermelada de mandarina</div>
+                  <!--Descripción-->
+                  <div class="product__card__desc">
+                    Elaboradas con frutas frescas seleccionadas, de temporada.
+                    Alto contenido de vitamina C, con reducción en azúcares sin
+                    alterar el dulzor.
+                  </div>
+                  <!--Precio y botón-->
+                  <div class="product__card__price">$2500</div>
+                  <!--<button class="btn btn-primary w-100">Agregar</button>-->
+                </div>
+              </div>
+            </div>
+            <!--Card 4-->
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="product__card">
+                <!--Imagen-->
+                <div
+                  class="product__card-img"
+                  style="background: linear-gradient(145deg, #fde8dc, #f5c4a8)"
+                >
+                  <img
+                    src="../img/mermeladas/mermeladaDeDurazno.webp"
+                    alt="mermelada de duraznos"
+                  />
+                </div>
+                <div class="product__card__body">
+                  <!--Etiqueta/categoría del producto-->
+                  <div class="product__card__cat">Mermeladas</div>
+                  <!--Nombre del producto-->
+                  <div class="product__card__name">Mermelada de duraznos</div>
+                  <!--Descripción-->
+                  <div class="product__card__desc">
+                    Elaboradas con frutas frescas seleccionadas, de temporada.
+                    Sabroso dulzor del durazno, con pedacitos de fruta.
+                  </div>
+                  <!--Precio y botón-->
+                  <div class="product__card__price">$5000</div>
+                  <!--<button class="btn btn-primary w-100">Agregar</button>-->
+                </div>
+              </div>
+            </div>
+            <!--cierre de grilla-->
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="site__footer py-4">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 text-center text-lg-start mb-3 mb-lg-0">
+            <div class="footer__logo">🍓 Sumbu Shop</div>
+
+            <div>Hecho con ❤️ en Argentina</div>
+          </div>
+
+          <div class="col-lg-4 text-center mb-3 mb-lg-0">
+            <div class="d-flex justify-content-center gap-4">
+              <a href="about-us.html"> Sobre Nosotros </a>
+
+              <a href="#" class="js-wa-link">Contacto por WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 text-center text-lg-end">
+            © 2026 Sumbu Shop. Todos los derechos reservados.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/demo.js"></script>
+  </body>
+</html>

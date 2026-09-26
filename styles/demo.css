@@ -1,0 +1,74 @@
+/* demo.css - Estilos de las funciones agregadas para la demo */
+.demo__ribbon {
+  background: #3a2518;
+  color: #fdf8f2;
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 6px 12px;
+  line-height: 1.4;
+}
+.demo__ribbon a { color: #ffc49e; font-weight: 600; text-decoration: underline; }
+
+.btn__wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: var(--radius-pill, 999px);
+  background: #1f9d55;
+  color: #fff !important;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.btn__wa:hover { background: #17803f; }
+
+.wa__float {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #1f9d55;
+  color: #fff !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  z-index: 200;
+}
+.wa__float:hover { background: #17803f; }
+
+/* Sección Dónde estamos */
+.visit__section { padding: 3.5rem 0; background: var(--color-bg); }
+.visit__card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 20px);
+  overflow: hidden;
+}
+.visit__info { padding: 2rem; color: var(--color-text); }
+.visit__info h3 { font-family: var(--font-display); color: var(--color-primary); font-size: 1.1rem; margin-top: 1.2rem; }
+.visit__info h3:first-of-type { margin-top: 0; }
+.visit__info p, .visit__info li { color: var(--color-text-soft); margin-bottom: 0.25rem; }
+.visit__info ul { list-style: none; padding: 0; }
+.visit__map iframe { width: 100%; height: 100%; min-height: 320px; border: 0; display: block; }
+
+/* Hero en celular: la imagen pasa arriba y el texto ocupa todo el ancho */
+@media (max-width: 767px) {
+  .hero { flex-direction: column-reverse; min-height: 0; }
+  .hero__content { flex: 1 1 auto; padding: 2rem 1.25rem; }
+  .hero__text { max-width: 100%; }
+  /* Imagen entera: sin el corte diagonal de escritorio y con su proporción real (1200x901) */
+  .hero__image {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 901;
+    clip-path: none;
+  }
+}

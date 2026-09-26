@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SumbuShop.ar - Papel Maché</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="../js/theme.js" defer></script>
+    <link rel="stylesheet" href="../styles/demo.css" />
+  </head>
+
+  <body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-xl sticky-top">
+      <div class="container-fluid">
+        <!--Logo-->
+        <a href="../index.html" class="navbar-brand">
+          🍓 SumbuShop<span>.ar</span>
+        </a>
+        <!--links de navegación-->
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav mx-auto mb-2 mb-xl-0 gap-1">
+            <li class="nav-item">
+              <a href="../index.html" class="nav-link active">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="jams.html" class="nav-link">Mermeladas</a>
+            </li>
+            <li class="nav-item">
+              <a href="preserved.html" class="nav-link">Conservas</a>
+            </li>
+            <li class="nav-item">
+              <a href="bakery.html" class="nav-link">Pastelería</a>
+            </li>
+            <li class="nav-item">
+              <a href="mache-paper.html" class="nav-link">Papel Maché</a>
+            </li>
+            <li class="nav-item">
+              <a href="cosmetics.html" class="nav-link">Cosmética</a>
+            </li>
+          </ul>
+          <!--Botones de tema y cierre de sesión-->
+          <div class="d-flex align-items-center gap-2">
+            <button
+              id="themeToggle"
+              class="btn__theme"
+              onclick="toggleTheme()"
+              title="Cambiar tema"
+            >
+              🌙
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!--Contenido de la página de papel maché-->
+    <main class="page__content">
+      <div class="header__mache">
+        <div class="container">
+          <p class="section-eyebrow">Sumbu Shop</p>
+
+          <h1 class="section-title" style="font-size: 2.4rem">
+            <img
+              src="data:image/png;base64,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"
+              alt="external-origami-japan-photo3ideastudio-lineal-color-photo3ideastudio"
+            />
+            Papel maché
+          </h1>
+
+          <p
+            style="
+              color: var(--color-text-soft);
+              margin-top: 0.5rem;
+              font-size: 0.95rem;
+              max-width: 480px;
+            "
+          >
+            Descubre nuestra variedad de productos de papel, hechos a mano con
+            materiales reciclados y técnicas tradicionales. Cada pieza es única
+            y refleja la creatividad y dedicación de nuestros artesanos.
+          </p>
+        </div>
+      </div>
+
+      <!--Grilla o cards de productos-->
+
+      <section class="py__section bg__cream">
+        <div class="container">
+          <div class="row g-4 justify-content-center">
+            <!--Card 1-->
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="product__card">
+                <!--Imagen-->
+                <div
+                  class="product__card-img"
+                  style="background: linear-gradient(145deg, #fde8dc, #f5c4a8)"
+                >
+                  <img
+                    src="../img/PapelMache/botellaDecorada.webp"
+                    alt="botella decorada"
+                  />
+                </div>
+                <div class="product__card__body">
+                  <!--Etiqueta/categoría del producto-->
+                  <div class="product__card__cat">Papel Mache</div>
+                  <!--Nombre del producto-->
+                  <div class="product__card__name">Botella decorada</div>
+                  <!--Descripción-->
+                  <div class="product__card__desc">
+                    Botella decorada con diferentes estilos, muy recomendado
+                    como centro de mesa o adorno para el hogar.
+                  </div>
+                  <!--Precio y botón-->
+                  <div class="product__card__price">$4000</div>
+                  <!--<button class="btn btn-primary w-100">Agregar</button>-->
+                </div>
+              </div>
+            </div>
+
+            <!--cierre de grilla-->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site__footer py-4">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 text-center text-lg-start mb-3 mb-lg-0">
+            <div class="footer__logo">🍓 Sumbu Shop</div>
+
+            <div>Hecho con ❤️ en Argentina</div>
+          </div>
+
+          <div class="col-lg-4 text-center mb-3 mb-lg-0">
+            <div class="d-flex justify-content-center gap-4">
+              <a href="about-us.html"> Sobre Nosotros </a>
+
+              <a href="#" class="js-wa-link">Contacto por WhatsApp</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 text-center text-lg-end">
+            © 2026 Sumbu Shop. Todos los derechos reservados.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/demo.js"></script>
+  </body>
+</html>

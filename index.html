@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <!--compatibilidad de navegadores-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SumbuShop.ar</title>
+    <meta
+      name="description"
+      content="SumbuShop.ar - Tu tienda de mermeladas y dulces artesanales. Descubre sabores únicos y deliciosos productos hechos con amor. Entre muchas otras cosas más"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!--Estilos personalizados propioos-->
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <!--Fuentes de Google -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/demo.css" />
+  </head>
+
+  <body>
+    <!--Navbar-->
+    <nav
+      class="navbar navbar-expand-xl sticky-top"
+      style="
+        background-color: var(--color-surface);
+        border-bottom: 1px solid var(--color-border);
+        box-shadow: 0 2px 8px rgba(58, 37, 24, 0.08);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        min-height: 64px;
+        padding: 0 !important;
+      "
+    >
+      <div
+        class="container-fluid"
+        style="
+          min-height: 85px;
+          display: flex;
+          align-items: center;
+          padding-top: 0;
+          padding-bottom: 0;
+        "
+      >
+        <!-- Logo -->
+        <a
+          href="index.html"
+          class="navbar-brand"
+          style="
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary) !important;
+            letter-spacing: -0.3px;
+          "
+        >
+          🍓 SumbuShop<span>.ar</span>
+        </a>
+
+        <!-- Links de navegación -->
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav mx-auto mb-2 mb-xl-0 gap-1">
+            <li class="nav-item">
+              <a
+                href="index.html"
+                class="nav-link active"
+                style="font-size: 1.3rem !important"
+                >Home</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a
+                href="pages/jams.html"
+                class="nav-link"
+                style="font-size: 1.3rem !important"
+                >Mermeladas</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a
+                href="pages/preserved.html"
+                class="nav-link"
+                style="font-size: 1.3rem !important"
+                >Conservas</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a
+                href="pages/bakery.html"
+                class="nav-link"
+                style="font-size: 1.3rem !important"
+                >Pastelería</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a
+                href="pages/mache-paper.html"
+                class="nav-link"
+                style="font-size: 1.3rem !important"
+              >
+                Papel Maché
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                href="pages/cosmetics.html"
+                class="nav-link"
+                style="font-size: 1.3rem !important"
+              >
+                Cosmética
+              </a>
+            </li>
+          </ul>
+
+          <!-- Botón de tema -->
+          <div class="d-flex align-items-center gap-2">
+            <button
+              id="themeToggle"
+              class="btn__theme"
+              onclick="toggleTheme()"
+              title="Cambiar tema"
+            >
+              🌙
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!--HERO-->
+    <main class="page__content">
+      <section class="hero">
+        <div class="hero__content">
+          <div class="hero__text">
+            <div class="hero_eyebrow">
+              Productos de calidad, desde Argentina
+            </div>
+            <h1 class="hero_title">
+              Disfrutar de un buen producto
+              <em>es tener una experiencia única</em>
+            </h1>
+            <p class="hero__subtitle">
+              Mermeladas, conservas y artesanías además de cosmética a tu
+              alcance. Todo hecho con amor y dedicación para que disfrutes de
+              productos únicos y de calidad.
+            </p>
+            <div class="d-flex gap-3 flex-wrap">
+              <a href="pages/jams.html" class="btn btn__sumbu"
+                >Explorar productos</a
+              >
+              <a href="pages/about-us.html" class="btn btn__sumbu__outline"
+                >Sobre Nosotros</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="hero__image"></div>
+      </section>
+
+      <!--PRESENTACION(lo que sería el trust bar)-->
+      <div class="presentacion__bar">
+        <div class="container-fluid">
+          <div class="row g-0">
+            <div class="col-6 col-md-3">
+              <div class="presentacion__item">
+                <!-- <span class="presentacion__icon">🚚</span> -->
+                <div>
+                  <div class="presentacion__label">Envíos a todo el país</div>
+                  <div class="presentacion__desc">
+                    Entregamos a todo el territorio nacional
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="presentacion__item">
+                <!-- <span class="presentacion__icon">💳</span> -->
+                <div>
+                  <div class="presentacion__label">Pagos seguros</div>
+                  <div class="presentacion__desc">
+                    Aceptamos tarjetas y transferencias
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="presentacion__item">
+                <!-- <span class="presentacion__icon">❤️</span> -->
+                <div>
+                  <div class="presentacion__label">Con amor</div>
+                  <div class="presentacion__desc">
+                    Desde Córdoba, Argentina, con dedicación y cariño
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="presentacion__item">
+                <!-- <span class="presentacion__icon">📞</span> -->
+                <div>
+                  <div class="presentacion__label">Atención al cliente</div>
+                  <div class="presentacion__desc">
+                    Estamos aquí para ayudarte
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--CATEGORIAS -->
+      <section class="py__section bg__cream">
+        <div class="container">
+          <div class="d-flex align-items-end justify-content-between mb-4">
+            <div>
+              <p class="section__eyebrown">Lo que encontrás</p>
+              <h2 class="section__title">Nuestras categorías</h2>
+            </div>
+            <!-- <a href="pages/jams.html" class="section-link"> Ver todo → </a> -->
+          </div>
+          <div class="row g-3 justify-content-center">
+            <!-- Mermeladas -->
+            <div class="col-6 col-md-4 col-xl d-flex">
+              <a href="pages/jams.html" class="cat__card">
+                <div class="cat__img jam">
+                  <img
+                    src="img/mermeladas/mermeladaDeFrutillas.webp"
+                    alt="Mermelada de frutillas"
+                  />
+                </div>
+                <div class="cat__body">
+                  <div class="cat__name">Mermeladas</div>
+                  <div class="cat__desc">
+                    Elaboradas con frutas frescas y sin conservantes
+                    artificiales.
+                  </div>
+                  <span class="cat__link"> Ver más → </span>
+                </div>
+              </a>
+            </div>
+            <!-- Conservas -->
+            <div class="col-6 col-md-4 col-xl d-flex">
+              <a href="pages/preserved.html" class="cat__card">
+                <div class="cat__img preserved">
+                  <img
+                    src="img/Conservas/Pepinillos.webp"
+                    alt="Conservas y pepinillos"
+                  />
+                </div>
+                <div class="cat__body">
+                  <div class="cat__name">Conservas</div>
+                  <div class="cat__desc">
+                    Escabeches, almíbares y preparaciones caseras listas para
+                    disfrutar.
+                  </div>
+                  <span class="cat__link"> Ver más → </span>
+                </div>
+              </a>
+            </div>
+            <!-- Pastelería -->
+            <div class="col-6 col-md-4 col-xl d-flex">
+              <a href="pages/bakery.html" class="cat__card">
+                <div class="cat__img preserved">
+                  <img
+                    src="img/Pastelería/ChocolateEspiral.webp"
+                    alt="Producto de pastelería"
+                  />
+                </div>
+                <div class="cat__body">
+                  <div class="cat__name">Pastelería</div>
+                  <div class="cat__desc">
+                    Tartas dulces, bizcochuelos, pastelitos y más, dulces y
+                    saladas.
+                  </div>
+                  <span class="cat__link"> Ver más → </span>
+                </div>
+              </a>
+            </div>
+            <!-- Cosmética -->
+            <div class="col-6 col-md-4 col-xl d-flex">
+              <a href="pages/cosmetics.html" class="cat__card">
+                <div class="cat__img cosmetics">
+                  <img
+                    src="img/Cosmética/cosmeticaGral.webp"
+                    alt="Productos de cosmética"
+                  />
+                </div>
+                <div class="cat__body">
+                  <div class="cat__name">Cosméticos</div>
+                  <div class="cat__desc">
+                    Cremas, aceites, serums, fragancias y más.
+                  </div>
+                  <span class="cat__link"> Ver más → </span>
+                </div>
+              </a>
+            </div>
+            <!-- Papel Maché -->
+            <div class="col-6 col-md-4 col-xl d-flex">
+              <a href="pages/mache-paper.html" class="cat__card">
+                <div class="cat__img mache">
+                  <img
+                    src="img/PapelMache/botellaDecorada.webp"
+                    alt="Artesanía de papel maché"
+                  />
+                </div>
+                <div class="cat__body">
+                  <div class="cat__name">Papel Maché</div>
+                  <div class="cat__desc">
+                    Artesanías únicas elaboradas a mano con técnica de papel
+                    maché.
+                  </div>
+                  <span class="cat__link"> Ver más → </span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--Sobre nosotros-->
+      <section class="py-section bg-cream">
+        <div class="container">
+          <div class="about__section">
+            <div class="row g-0">
+              <div
+                class="col-lg-7 p-4 p-md-5 d-flex flex-column justify-content-center"
+              >
+                <p class="about__label">Nuestra historia</p>
+                <h2 class="about__title">La calidad que nos define.</h2>
+                <p class="about__body">
+                  En Sumbu Shop creemos que lo bueno trae alegría. Por eso, nos
+                  dedicamos a vender productos de calidad. Desde mermeladas y
+                  conservas hasta artesanías y cosmética natural, cada artículo
+                  que ofrecemos tiene una historia única que contar. Queremos
+                  que cada experiencia de compra sea especial y memorable para
+                  nuestros clientes.
+                </p>
+                <div>
+                  <a
+                    href="pages/about-us.html"
+                    class="btn btn-outline-primary"
+                    style="
+                      border-color: rgba(255, 255, 255, 0.5) !important;
+                      color: #fff !important;
+                    "
+                  >
+                    Conocer más →
+                  </a>
+                </div>
+              </div>
+              <div class="col-lg-5">
+                <div class="about__visual">
+                  <img src="img/Oh!Florecillas.webp" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--DÓNDE ESTAMOS-->
+      <section class="visit__section" id="donde-estamos">
+        <div class="container">
+          <p class="section__eyebrown">Visitanos</p>
+          <h2 class="section__title mb-4">Dónde estamos</h2>
+          <div class="visit__card">
+            <div class="row g-0">
+              <div class="col-lg-5">
+                <div class="visit__info">
+                  <h3>Dirección</h3>
+                  <p>Barrio General Paz, Córdoba Capital (dirección de ejemplo)</p>
+                  <h3>Horarios</h3>
+                  <ul>
+                    <li>Lunes a viernes: 9 a 13 y 17 a 21 h</li>
+                    <li>Sábados: 9 a 14 h</li>
+                    <li>Domingos: cerrado</li>
+                  </ul>
+                  <h3>Formas de pago</h3>
+                  <p>Efectivo, transferencia y Mercado Pago (QR)</p>
+                  <a href="#" class="btn__wa js-wa-link" style="max-width: 280px">Consultanos por WhatsApp</a>
+                </div>
+              </div>
+              <div class="col-lg-7 visit__map">
+                <iframe
+                  title="Mapa de ubicación"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  src="https://www.google.com/maps?q=Barrio%20General%20Paz%2C%20C%C3%B3rdoba%2C%20Argentina&output=embed"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!--Footer-->
+    <footer class="site__footer py-4">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 text-center text-lg-start mb-3 mb-lg-0">
+            <div class="footer__logo">🍓 Sumbu Shop</div>
+            <div>Hecho con ❤️ en Argentina</div>
+          </div>
+          <div class="col-lg-4 text-center mb-3 mb-lg-0">
+            <div class="d-flex justify-content-center gap-4">
+              <a href="pages/about-us.html">Sobre Nosotros</a>
+              <a href="#" class="js-wa-link">Contacto por WhatsApp</a>
+            </div>
+          </div>
+          <div class="col-lg-4 text-center text-lg-end">
+            © 2026 Sumbu Shop. Todos los derechos reservados.
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!--Script-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/demo.js"></script>
+  </body>
+</html>
