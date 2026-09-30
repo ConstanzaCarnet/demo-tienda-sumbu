@@ -1,0 +1,12 @@
+seccion,etiqueta,nombre,descripcion,precio,foto,mostrar
+Mermeladas,Mermeladas,Mermelada de naranjas,"Naranjas frescas de temporada, cocidas a fuego lento. Sin colorantes, ni conservantes, reducida en azúcares.",2000,img/mermeladas/naranjasParaMermelada.webp,SI
+Mermeladas,Mermeladas,Mermelada de frutillas,"Elaboradas con frutas frescas seleccionadas, sin conservantes artificiales y con recetas tradicionales.",3000,img/mermeladas/mermeladaDeFrutillas.webp,SI
+Mermeladas,Mermeladas,Mermelada de mandarina,"Elaboradas con frutas frescas seleccionadas, de temporada. Alto contenido de vitamina C, con reducción en azúcares sin alterar el dulzor.",2500,img/mermeladas/mermeladaDeMandarina.webp,SI
+Mermeladas,Mermeladas,Mermelada de duraznos,"Elaboradas con frutas frescas seleccionadas, de temporada. Sabroso dulzor del durazno, con pedacitos de fruta.",5000,img/mermeladas/mermeladaDeDurazno.webp,SI
+Conservas,Conservas,Quinotos en almíbar,"Como siempre tenemos frutas de temporada de la mejor calidad. Quinotos que quedan bien dulces, sin acidez y muy bueno para consumirlo con queso o solo.",5000,img/Conservas/quinotos_almnibar.webp,SI
+Conservas,Conservas,Pepinillos agridulces,"Pepinillos con un toque dulce y salado, para nada avinagrado. Ideal para complemento en ensaladas, arroz frío, sanguches y más.",4500,img/Conservas/Pepinillos.webp,SI
+Pastelería,Tarta de chocolate,Tarta tipo cabsha,"Tarta con masa quebrada dulce, un relleno de dulce de leche repostero y una cubierta de chocolate negro con leche, decorado con chocolate blanco.",75000,img/Pastelería/ChocolateEspiral.webp,SI
+Pastelería,Bizcocho con frutas,Bizcocho con frutas,"Elaborado con frutos secos de excelente calidad y glaseado de limón o naranja por encima, con un sabor dulce ideal para fiestas o acompañar tus tardes.",35000,img/Pastelería/PastelGlaseadoConFruta.webp,SI
+Papel Maché,Papel Maché,Botella decorada,"Botella decorada con diferentes estilos, muy recomendado como centro de mesa o adorno para el hogar.",4000,img/PapelMache/botellaDecorada.webp,SI
+Cosmética,Cosméticos,Crema para día ∙ Mary Kay,"Crema con factor de protector solar para el día, protege la piel y deja una sensación fresca.",30000,img/Cosmética/cremaParaDiaMK.webp,SI
+Cosmética,Cosmética Natural,Crema de lavanda ∙ Just,"Elaborado sin testear en animales, con ingredientes seleccionados. Sin conservantes artificiales.",Próximamente,img/Cosmética/CremaDeLavandaJust.webp,SI
