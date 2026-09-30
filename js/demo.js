@@ -15,8 +15,10 @@ const CONFIG = {
 
   // Productos desde planilla (Google Sheets → Archivo → Compartir → Publicar en la web → CSV).
   // Pegá acá el link del CSV publicado. Si queda vacío, se muestran los productos escritos en el HTML.
-  planillaProductos:
+  // Se pueden poner varios links (ej. hoja de productos + hoja de respuestas del formulario).
+  planillaProductos: [
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vSTQSC13M6CAa8Z9wFYiyNZq1TyRWIA3jivic7mzFcCvCxnPVXDyZlkMxBQTzqL8H76fVSeZ8pSGjwy/pub?gid=776560393&single=true&output=csv",
+  ],
 };
 
 // Carpeta raíz del sitio (sirve igual desde index.html o desde pages/)
@@ -86,7 +88,9 @@ function agregarBotonWA(card) {
 */
 async function cargarProductosDePlanilla() {
   const grillas = document.querySelectorAll("[data-seccion]");
-  if (!CONFIG.planillaProductos || grillas.length === 0) return;
+  // Puede ser un link o varios (ej. hoja de productos + hoja de respuestas del formulario)
+  const links = [].concat(CONFIG.planillaProductos || []).filter(Boolean);
+  if (links.length === 0 || grillas.length === 0) return;
   // Abierto con doble clic (file://): el navegador bloquea leer la planilla,
   // así que se dejan los productos escritos en el HTML.
   if (location.protocol === "file:") {
@@ -99,20 +103,13 @@ async function cargarProductosDePlanilla() {
   grillas.forEach(function (grilla) {
     const fondo = grilla.querySelector(".product__card-img")?.getAttribute("style") || "";
     fondos.set(grilla, fondo);
-    grilla.replaceChildren(mensajeGrilla("Cargando productos…"));
+    grilla.replaceChildren(cargadorGrilla());
   });
 
-  let filas;
+  let datos;
   try {
-    const url = new URL(CONFIG.planillaProductos, RAIZ_SITIO);
-    // Si se pegó el link "pubhtml" de Google Sheets, se pide la versión CSV
-    if (url.hostname === "docs.google.com" && url.pathname.endsWith("/pubhtml")) {
-      url.pathname = url.pathname.replace(/\/pubhtml$/, "/pub");
-      url.searchParams.set("output", "csv");
-    }
-    const resp = await fetch(url, { cache: "no-store" });
-    if (!resp.ok) throw new Error("HTTP " + resp.status);
-    filas = leerCSV(await resp.text());
+    const hojas = await Promise.all(links.map(leerHoja));
+    datos = hojas.flat();
   } catch (err) {
     console.error("No se pudo leer la planilla de productos:", err);
     grillas.forEach(function (grilla) {
@@ -121,12 +118,7 @@ async function cargarProductosDePlanilla() {
     return;
   }
 
-  const [encabezado, ...datos] = filas;
-  const col = {};
-  (encabezado || []).forEach(function (titulo, i) {
-    col[normalizar(titulo)] = i;
-  });
-  const valor = (fila, nombre) => (fila[col[nombre]] ?? "").trim();
+  const valor = (fila, nombre) => fila[nombre] || "";
 
   grillas.forEach(function (grilla) {
     const seccion = normalizar(grilla.dataset.seccion);
@@ -157,6 +149,26 @@ async function cargarProductosDePlanilla() {
   });
 }
 
+// Descarga una hoja publicada y devuelve sus filas como objetos { seccion, nombre, ... }
+async function leerHoja(link) {
+  const url = new URL(link, RAIZ_SITIO);
+  // Si se pegó el link "pubhtml" de Google Sheets, se pide la versión CSV
+  if (url.hostname === "docs.google.com" && url.pathname.endsWith("/pubhtml")) {
+    url.pathname = url.pathname.replace(/\/pubhtml$/, "/pub");
+    url.searchParams.set("output", "csv");
+  }
+  const resp = await fetch(url, { cache: "no-store" });
+  if (!resp.ok) throw new Error("HTTP " + resp.status + " en " + url);
+  const [encabezado = [], ...filas] = leerCSV(await resp.text());
+  // Los títulos se comparan sin acentos ni mayúsculas: "Descripción" = "descripcion"
+  const titulos = encabezado.map(normalizar);
+  return filas.map(function (fila) {
+    const obj = {};
+    titulos.forEach((t, i) => (obj[t] = (fila[i] || "").trim()));
+    return obj;
+  });
+}
+
 function crearTarjeta(p, fondo) {
   const el = (tag, clase, texto) => {
     const n = document.createElement(tag);
@@ -182,6 +194,24 @@ function crearTarjeta(p, fondo) {
   card.append(caja, body);
   columna.appendChild(card);
   return columna;
+}
+
+// Logo del sitio dentro de un anillo que gira + texto
+function cargadorGrilla() {
+  const caja = document.createElement("div");
+  caja.className = "cargador";
+  caja.setAttribute("role", "status");
+  const icono = document.createElement("div");
+  icono.className = "cargador__icono";
+  const logo = document.createElement("img");
+  logo.src = new URL("img/apple-touch-icon.png", RAIZ_SITIO).href;
+  logo.alt = "";
+  icono.appendChild(logo);
+  const texto = document.createElement("p");
+  texto.className = "cargador__texto";
+  texto.textContent = "Cargando productos…";
+  caja.append(icono, texto);
+  return caja;
 }
 
 function mensajeGrilla(texto) {

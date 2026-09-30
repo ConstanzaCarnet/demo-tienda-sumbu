@@ -43,6 +43,50 @@
 }
 .wa__float:hover { background: #17803f; }
 
+/* Cargador de productos (mientras se lee la planilla) */
+.cargador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 3rem 0;
+}
+.cargador__icono {
+  position: relative;
+  width: 76px;
+  height: 76px;
+}
+.cargador__icono::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 4px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  animation: cargador-giro 0.9s linear infinite;
+}
+.cargador__icono img {
+  position: absolute;
+  inset: 10px;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  border-radius: 50%;
+  object-fit: cover;
+  animation: cargador-latido 1.4s ease-in-out infinite;
+}
+.cargador__texto {
+  margin: 0;
+  color: var(--color-text-soft);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+@keyframes cargador-giro { to { transform: rotate(360deg); } }
+@keyframes cargador-latido { 50% { transform: scale(0.9); } }
+@media (prefers-reduced-motion: reduce) {
+  .cargador__icono::before { animation-duration: 2.5s; }
+  .cargador__icono img { animation: none; }
+}
+
 /* Sección Dónde estamos */
 .visit__section { padding: 3.5rem 0; background: var(--color-bg); }
 .visit__card {
