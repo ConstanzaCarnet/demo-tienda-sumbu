@@ -1,0 +1,45 @@
+# Publica el sitio en GitHub Pages generando js/config.local.js desde el secret
+# PLANILLA_PRODUCTOS (uno o varios links separados por coma o salto de línea).
+name: Publicar en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generar js/config.local.js
+        env:
+          PLANILLA_PRODUCTOS: ${{ secrets.PLANILLA_PRODUCTOS }}
+        run: |
+          node -e '
+            const links = (process.env.PLANILLA_PRODUCTOS || "").split(/[\s,]+/).filter(Boolean);
+            require("fs").writeFileSync("js/config.local.js", "window.PLANILLA_PRODUCTOS = " + JSON.stringify(links) + ";\n");
+            console.log("Links de planilla configurados:", links.length);
+          '
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

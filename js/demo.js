@@ -14,15 +14,26 @@ const CONFIG = {
   portfolio: "https://constanza-carnet.vercel.app/",
 
   // Productos desde planilla (Google Sheets → Archivo → Compartir → Publicar en la web → CSV).
-  // Pegá acá el link del CSV publicado. Si queda vacío, se muestran los productos escritos en el HTML.
-  // Se pueden poner varios links (ej. hoja de productos + hoja de respuestas del formulario).
-  planillaProductos: [
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vSTQSC13M6CAa8Z9wFYiyNZq1TyRWIA3jivic7mzFcCvCxnPVXDyZlkMxBQTzqL8H76fVSeZ8pSGjwy/pub?gid=776560393&single=true&output=csv",
-  ],
+  // El link NO se escribe acá: se lee de js/config.local.js (no se sube al repo, ver
+  // js/config.local.example.js). En GitHub Pages lo genera el workflow desde el secret
+  // PLANILLA_PRODUCTOS. Si no hay link, se muestran los productos escritos en el HTML.
+  planillaProductos: [],
 };
 
 // Carpeta raíz del sitio (sirve igual desde index.html o desde pages/)
 const RAIZ_SITIO = new URL("..", document.currentScript.src);
+
+// Carga js/config.local.js (si existe) y devuelve los links de la planilla
+function leerConfigLocal() {
+  return new Promise(function (resolve) {
+    const script = document.createElement("script");
+    script.src = new URL("js/config.local.js", RAIZ_SITIO).href;
+    script.onload = script.onerror = function () {
+      resolve([].concat(window.PLANILLA_PRODUCTOS || CONFIG.planillaProductos || []));
+    };
+    document.head.appendChild(script);
+  });
+}
 
 function linkWhatsApp(numero, mensaje) {
   return `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
@@ -89,8 +100,9 @@ function agregarBotonWA(card) {
 async function cargarProductosDePlanilla() {
   const grillas = document.querySelectorAll("[data-seccion]");
   // Puede ser un link o varios (ej. hoja de productos + hoja de respuestas del formulario)
-  const links = [].concat(CONFIG.planillaProductos || []).filter(Boolean);
-  if (links.length === 0 || grillas.length === 0) return;
+  if (grillas.length === 0) return;
+  const links = (await leerConfigLocal()).filter(Boolean);
+  if (links.length === 0) return;
   // Abierto con doble clic (file://): el navegador bloquea leer la planilla,
   // así que se dejan los productos escritos en el HTML.
   if (location.protocol === "file:") {
